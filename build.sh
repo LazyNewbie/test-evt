@@ -27,3 +27,5 @@ php "$tools/constants2enum.php" "$outputPHP" "Exads/Common/GPBMetadata";
 
 cd "$outputGO/main" && go mod init github.com/LazyNewbie/test-evt/generated/go/main && go mod tidy;
 cd "$SCRIPTPATH";
+
+git add "$SCRIPTPATH/generated/*"
