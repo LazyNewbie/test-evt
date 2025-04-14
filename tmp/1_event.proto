@@ -1,0 +1,229 @@
+syntax = "proto3";
+package exads.schema.events;
+option go_package ="main/events";
+// option php_namespace="\Exads\Schema\Events"
+
+// reserved
+
+
+/**
+* 1. Read this documentation https://protobuf.dev/programming-guides/proto3/ 
+* 2. DO NOT reuse indexes and DON'T just delete them. Use "reserved" key instead @see 
+*/
+
+enum EventType{
+	Unspecified = 0;
+	Impression = 1;
+	Click = 2;
+	Goal = 3;
+	Videoview = 4;
+	Videohit = 5;
+	Rtb = 6;
+	Wpn = 7;
+	Adrequest = 8;
+}
+
+
+
+message __common_event_fields {
+    int32 date = 1000;
+    string user_ip = 1001;
+    string country = 1002;
+    int32 id_language = 1003;	
+    string site_hostname = 1004;
+    int64 id_advertiser = 1005;
+    int64 id_publisher = 1006;
+    int64 id_site = 1007;
+    int64 id_zone = 1008;
+    int32 id_category = 1009;
+    int64 id_campaign = 1010;
+    int64 id_variation = 1011;
+    int32 id_os = 1012;
+    int32 id_browser = 1013;
+    int32 id_device = 1014;
+    int32 id_carrier = 1015;
+    int32 id_isp = 1016;
+    int64 sub = 1017;
+    double value = 1018;
+    int32 publisher_rate = 1019;
+    string publisher_currency = 1020;
+    string campaign_currency = 1021;
+    double exchange_to_publisher = 1022;
+    double exchange_to_network = 1023;
+    int32 ad_type = 1024;    
+    int32 id_network = 1025;
+    string country_original = 1026;
+    string http_x_forwarded_for = 1027;
+    int32 id_product_category = 1028;
+    int32 pricing_model = 1029;
+    int32 https = 1030;
+    string screen_resolution = 1031;
+    string user_id = 1032;
+    string url_hash = 1033;
+    string referer_site_hostname = 1034;
+    int32 adblock = 1035;
+    int64 id_offer = 1036;
+    int64 id_landing_page = 1037;
+    int32 id_datacenter = 1038;
+    int32 id_carrier_source = 1039;
+    int32 noscript = 1040;
+    int32 incognito_mode = 1041;
+    int32 test_mode = 1042;
+    int64 region_geoname_id = 1043;
+    int32 id_partner = 1044;
+    int32 city_geoname_id = 1045;
+    string netacuity_proxy_type = 1046;
+    string netacuity_proxy_description = 1047;
+    string adblock_ver = 1048;						// adblock_ver <-> adblock_version
+    int32 impression_all_invalid_reasons = 1049;
+    int64 sub2 = 1050;
+    int64 sub3 = 1051;
+    string script_type = 1052;
+    string script_name = 1053;
+    string script_ver = 1054;
+    int32 browser_ver = 1055;
+    int32 vr = 1056;
+    int32 no_funds = 1057;
+    int32 id_multizone = 1058;
+    int32 email_isp = 1059;
+    int32 script_detail = 1060;
+    int32 script_version = 1061;
+    int32 id_advertiser_ad_type = 1062;
+    int32 id_proxy = 1063;    
+    int32 id_campaign_type = 1064;
+    string rtb_inventory_id = 1065;
+    string tb_inventory_name = 1066;
+    int32 key_value_1 = 1067;
+    int32 key_value_2 = 1068;
+    int32 key_value_3 = 1069;
+    int32 key_value_4 = 1070;
+    int32 key_value_5 = 1071;
+    int32 key_value_6 = 1072;
+    int32 key_value_7 = 1073;
+    int32 key_value_8 = 1074;
+    int32 key_value_9 = 1075;
+    int32 key_value_10 = 1076;
+    int32 fallback_position = 1077;
+    string ad_serving_host = 1078;
+    string custom_value_1 = 1079;
+    string custom_value_2 = 1080;
+    string custom_value_3 = 1081;
+    // id_network_type = ;
+    // format = ;
+}
+
+
+message EventImpression {
+    int32 impression_status = 1;
+    int32 impression_invalid_reason = 2;
+    double execution_time = 3;
+    int32 position = 4;	
+    string container_resolution = 5;
+    int32 internal = 6;
+    int32 id_responsive_layout = 7;
+    int32 refresh_iteration = 8;
+    int64 cdn_usage = 9;
+    float bid_shading_value = 10;
+    float second_best_value = 11;
+    float auction_floor = 12;
+    float auction_ceil = 13;
+    int32 ad_request_result = 14;
+    int32 id_traffic_source = 15;
+    int32 id_client_hints = 16;
+    // proxy_status;
+}
+
+message EventAdRequest {
+    int32 impression_status = 1;
+    int32 impression_invalid_reason = 2;
+    double execution_time = 3;
+    int32 position = 4;
+    string container_resolution = 6;
+    int32 internal = 7;
+    int32 id_responsive_layout = 8;
+    int32 refresh_iteration = 9;
+    int32 sampling = 10;
+    int32 ad_request_result = 11;
+    int32 id_traffic_source = 12;
+
+	// proxy_status
+	// client_hints_usage
+}
+
+message EventClick {
+    int32 click_status = 1;
+    string click_invalid_reason = 2;
+    int32 impression_status = 3;
+    int32 impression_invalid_reason = 4;
+    int32 click_x = 5;
+    int32 click_y = 6;
+    int32 position = 7;
+    int32 click_all_invalid_reasons = 9;
+    int32 email_status = 10;
+    int32 internal = 11;
+    int32 id_responsive_layout = 12;
+    int32 refresh_iteration = 13;
+    float bid_shading_value = 14;
+    float second_best_value = 15;
+    float auction_floor = 16;
+    float auction_ceil = 17;
+    int32 ad_request_result = 18;
+    int32 id_traffic_source = 19;
+    int32 id_client_hints = 20;
+	// proxy_status
+}
+
+message EventVideoHit {
+    int32 impression_status = 1;
+    int32 impression_invalid_reason = 2;
+    double execution_time = 3;
+    int32 id_responsive_layout = 6;
+    int64 cdn_usage = 7;
+    float bid_shading_value = 8;
+    float second_best_value = 9;
+    float auction_floor = 10;
+    float auction_ceil = 11;
+    int32 ad_request_result = 12;
+    int32 id_traffic_source = 13;
+    int32 id_client_hints = 14;
+
+	// is_trusted_proxy;
+	// is_internal;
+}
+
+message EventVideoView {
+    int32 impression_status = 1;
+    int32 impression_invalid_reason = 2;
+    int32 video_event = 3;
+    int32 error_code = 4; // errorcode replaced with error_code
+    int32 id_responsive_layout = 7; // idresponsive_layout replaced with id_responsive_layout
+    int32 id_traffic_source = 8; // idtraffic_source replaced with id_traffic_source
+	
+	// is_trusted_proxy;
+	// is_internal;
+	// client_hints_usage;
+}
+
+message EventRtb {
+    string imp_id = 1;
+    string bid_id = 2;
+    int32 http_code = 3;
+    int64 rtb_total_time = 4;
+    double rtb_content_size = 5
+    string bid_status = 6;
+    string error_reason = 7;
+    bool rtb_query_status = 8;
+    double rtb_value = 9;
+    int32 rtb_request_type = 10
+    int32 internal = 12;
+    int32 sampling = 13;
+    float bid_shading_value = 14
+    float second_best_value = 15;
+    float auction_floor = 16;
+    float auction_ceil = 17;
+    int32 ad_request_result = 18
+    int32 id_traffic_source = 19;
+    int32 id_rtb_error_reason = 20;
+
+	// proxy_status
+}

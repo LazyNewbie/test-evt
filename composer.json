@@ -1,0 +1,12 @@
+{
+    "name": "exads/evt-protobuf",
+    "require": {
+        "google/protobuf": "^4.30"
+    },
+    "autoload": {
+        "psr-4": {
+            "GPBMetadata\\": "generated/php/GPBMetadata",
+            "Main\\": "generated/php/Main"
+        }
+    }
+}

@@ -1,0 +1,167 @@
+syntax = "proto3";
+package exads.schema.events;
+option go_package ="main/adevents";
+option php_namespace="Exads\\Common\\Schema\\Events";
+option php_metadata_namespace = "Exads\\Common\\GPBMetadata";
+
+
+// reserved
+
+
+/**
+* 1. Read this documentation https://protobuf.dev/programming-guides/proto3/ 
+* 2. DO NOT reuse indexes and DON'T just delete them. Use "reserved" key instead @see 
+*/
+
+enum AdEventType{
+	Unspecified = 0;
+	Impression = 1;
+	Click = 2;
+	Goal = 3;
+	VideoView = 4;
+	VideoHit = 5;
+	Rtb = 6;
+	Wpn = 7;
+	AdRequest = 8;
+}
+
+
+message AdEvent {
+    uint64 date_int=1;
+    uint64 time=2;
+    string country=3;
+    int32 idlanguage=4;
+    string site_hostname=5;
+    int32 idadvertiser=6;
+    int32 idpublisher=7;
+    int32 idsite=8;
+    int32 idzone=9;
+    int32 idcategory=10;
+    int32 idcampaign=11;
+    int32 idvariation=12;
+    int32 idos=13;
+    int32 idbrowser=14;
+    int32 iddevice=15;
+    int32 idcarrier=16;
+    int32 idisp=17;
+    int32 sub=18;
+    float value=19;
+    int32 publisher_rate=20;
+    string publisher_currency=21;
+    string campaign_currency=22;
+    float exchange_to_publisher=23;
+    float exchange_to_network=24;
+    int32 ad_type=25;
+    string format=26;
+    int32 idnetwork=27;
+    int32 impression_status=28;
+    int32 impression_invalid_reason=29;
+    int32 adblock=30;
+    int32 idoffer=31;
+    int32 idlanding_page=32;
+    int32 position=33;
+    int32 region_geoname_id=34;
+    int32 idpartner=35;
+    int32 click_status=36;
+    string click_invalid_reason=37;
+    int32 click_all_invalid_reasons=38;
+    string idgoal=39;
+    int32 rtb_total_time=40;
+    float rtb_content_size=41;
+    string bid_status=42;
+    string error_reason=43;
+    bool rtb_query_status=44;
+    float rtb_value=45;
+    int32 rtb_request_type=46;
+    int32 event_type=47;
+    string user_ip=48;
+    string country_original=49;
+    string http_x_forwarded_for=50;
+    int32 idproduct_category=51;
+    int32 pricing_model=52;
+    int32 https=53;
+    string screen_resolution=54;
+    string user_id=55;
+    string url_hash=56;
+    string referer_site_hostname=57;
+    float execution_time=58;
+    int32 video_event=59;
+    int32 errorcode=60;
+    string imp_id=61;
+    string bid_id=62;
+    int32 http_code=63;
+    int32 idcarrier_source=64;
+    int32 noscript=65;
+    int32 incognito_mode=66;
+    int32 test_mode=67;
+    int32 city_geoname_id=68;
+    int32 is_trusted_proxy=69;
+    int32 iddatacenter=70;
+    string adblock_ver=71;
+    int32 clickx=72;
+    int32 clicky=73;
+    string container_resolution=74;
+    int32 impression_all_invalid_reasons=75;
+    string netacuity_proxy_description=76;
+    string netacuity_proxy_type=77;
+    float eur_to_usd=78;
+    int32 wpn_event=79;
+    int32 email_status=80;
+    int32 sub2=81;
+    int32 sub3=82;
+    string script_type=83;
+    string script_name=84;
+    string script_ver=85;
+    int32 browser_ver=86;
+    int32 vr=87;
+    int32 internal=88;
+    int32 sampling=89;
+    int32 no_funds=90;
+    int32 idresponsive_layout=91;
+    int32 idmultizone=92;
+    int32 email_isp=93;
+    int32 script_detail=94;
+    int32 script_version=95;
+    float conversion_value_eur=96;
+    float conversion_value_usd=97;
+    int32 idadvertiser_ad_type=98;
+    int32 idproxy=99;
+    int32 ad_request_result=100;
+    int32 idnetwork_type=101;
+    string rtb_inventory_id=102;
+    string rtb_inventory_name=103;
+    int32 idcampaign_type=104;
+    int32 refresh_iteration=105;
+    int32 key_value_1=106;
+    int32 key_value_2=107;
+    int32 key_value_3=108;
+    int32 key_value_4=109;
+    int32 key_value_5=110;
+    int32 key_value_6=111;
+    int32 key_value_7=112;
+    int32 key_value_8=113;
+    int32 key_value_9=114;
+    int32 key_value_10=115;
+    int32 cdn_usage=116;
+    float bid_shading_value=117;
+    float second_best_value=118;
+    float auction_floor=119;
+    float auction_ceil=120;
+    int32 idtraffic_source=121;
+    int32 fallback_position=122;
+    string ad_serving_host=123;
+    int32 idrtb_error_reason=124;
+    int32 client_hints_usage=125;
+    string custom_value_1=126;
+    string custom_value_2=127;
+    string custom_value_3=128;
+}
+
+
+/*
+null proxy_status
+null date
+
+uint8 id_network_type // TrafficType --> idnetwork_type
+
+*/

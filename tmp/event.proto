@@ -1,0 +1,239 @@
+syntax = "proto3";
+package exads.schema.events;
+option go_package ="main/events";
+option php_namespace="Exads\\Common\\Schema\\Events";
+option php_metadata_namespace = "Exads\\Common\\GPBMetadata";
+
+
+// reserved
+
+
+/**
+* 1. Read this documentation https://protobuf.dev/programming-guides/proto3/ 
+* 2. DO NOT reuse indexes and DON'T just delete them. Use "reserved" key instead @see 
+*/
+
+// enum EventType{
+// 	Unspecified = 0;
+// 	Impression = 1;
+// 	Click = 2;
+// 	Goal = 3;
+// 	Videoview = 4;
+// 	Videohit = 5;
+// 	Rtb = 6;
+// 	Wpn = 7;
+// 	Adrequest = 8;
+// }
+
+
+
+// message __common_event_fields {
+//     // int32 date = 1000;   ------------- empty value   `avro:"aa" json:"aa"` ???
+//     // id_network_type = ;  !!!!!!!!!!!!!!!!!!!
+//     string user_ip = 1001;  // UserIP 
+//     string country = 1002;  // Country 
+//     uint32 id_language = 1003;	// Language --> idlanguage
+//     string site_hostname = 1004;    // SiteHostname 
+//     int64 id_advertiser = 1005; // Advertiser --> idadvertiser
+//     int64 id_publisher = 1006;  // Publisher --> idpublisher
+//     int64 id_site = 1007;   // Site --> idsite
+//     int64 id_zone = 1008;   // Zone --> idzone
+//     uint32 id_category = 1009;  // Category --> idcategory
+//     int64 id_campaign = 1010;   // Campaign --> idcampaign
+//     int64 id_variation = 1011;  // Variation --> idvariation
+//     uint32 id_os = 1012;    // OS --> idos
+//     uint32 id_browser = 1013;   // Browser --> idbrowser
+//     uint32 id_device = 1014;    // Device --> iddevice
+//     uint32 id_carrier = 1015;   // Carrier --> idcarrier
+//     uint32 id_isp = 1016;   // ISP --> idisp
+//     uint32 sub = 1017;  // Sub 
+//     double value = 1018;     // Value
+//     int32 publisher_rate = 1019;    // PublisherRate
+//     string publisher_currency = 1020;   // PublisherCurrency
+//     string campaign_currency = 1021;    // CampaignCurrency
+//     double exchange_to_publisher = 1022;    // Exchange2Publisher
+//     double exchange_to_network = 1023;  // Exchange2Network
+//     uint32 ad_type = 1024;  //AdType
+//     uint32 id_network = 1025; //Network -> idnetwork
+//     string country_original = 1026; // CountryOriginal
+//     string http_x_forwarded_for = 1027; //HTTPXForwardedFor
+//     uint32 id_product_category = 1028;   // ProductCategory --> idproduct_category
+//     uint32 pricing_model = 1029;    // PricingModel 
+//     uint32 https = 1030; //HTTPS 
+//     string screen_resolution = 1031;    // ScreenResolution
+//     string user_id = 1032;  // UserID 
+//     string url_hash = 1033; // URLHash 
+//     string referer_site_hostname = 1034;    // RefererSiteHostname 
+//     uint32 adblock = 1035;  // AdBlock 
+//     int64 id_offer = 1036;  // Offer --> idoffer
+//     uint32 id_landing_page = 1037;   // LandingPage --> idlanding_page
+//     int32 id_datacenter = 1038; // Datacenter --> iddatacenter
+//     int32 id_carrier_source = 1039; // CarrierSource --> idcarrier_source
+//     uint32 noscript = 1040; // NoScript 
+//     uint32 incognito_mode = 1041; // IncognitoMode
+//     uint32 test_mode = 1042;     // TestMode 
+//     uint32 region_geoname_id = 1043;     // RegionGeonameID
+//     uint32 id_partner = 1044;   // Partner --> idpartner
+//     uint32 city_geoname_id = 1045;  // CityGeonameID 
+//     string netacuity_proxy_type = 1046; // NetacuityProxyType 
+//     string netacuity_proxy_description = 1047;  // NetacuityProxyDescription 
+//     string adblock_ver = 1048;  // AdblockVersion
+//     int64 impression_all_invalid_reasons = 1049;    // ImpressionAllInvalidReasons 
+//     uint32 sub2 = 1050; // Sub2 
+//     uint32 sub3 = 1051; // Sub3 
+//     string script_type = 1052;  // ScriptType 
+//     string script_name = 1053;  // ScriptName 
+//     string script_ver = 1054;   // ScriptVer 
+//     uint32 browser_ver = 1055;  // BrowserVer 
+//     uint32 vr = 1056;   // VR 
+//     uint32 no_funds = 1057; // NoFunds 
+//     uint32 id_multizone = 1058;  // MultiZone --> idmultizone
+//     uint32 email_isp = 1059;    // EmailISP 
+//     uint32 script_detail = 1060;    // ScriptDetail 
+//     int32 script_version = 1061;    // ScriptVersion 
+//     uint32 id_advertiser_ad_type = 1062;    // IdAdvertiserAdType --> idadvertiser_ad_type
+//     uint32 id_proxy = 1063;  // Proxy --> idproxy
+//     uint32 id_campaign_type = 1064;  // IdCampaignType --> idcampaign_type
+//     string rtb_inventory_id = 1065; // RtbInventoryId 
+//     string rtb_inventory_name = 1066;   // RtbInventoryName 
+//     uint32 key_value_1 = 1067;  // KeyValue1 
+//     uint32 key_value_2 = 1068;  // KeyValue2 
+//     uint32 key_value_3 = 1069;  // KeyValue3 
+//     uint32 key_value_4 = 1070;  // KeyValue4 
+//     uint32 key_value_5 = 1071;  // KeyValue5 
+//     uint32 key_value_6 = 1072;  // KeyValue6 
+//     uint32 key_value_7 = 1073;  // KeyValue7 
+//     uint32 key_value_8 = 1074;  // KeyValue8 
+//     uint32 key_value_9 = 1075;  // KeyValue9 
+//     uint32 key_value_10 = 1076; // KeyValue10 
+//     uint32 fallback_position = 1077;    // FallbackPosition
+//     string ad_serving_host = 1078;  // AdServingHost 
+//     string custom_value_1 = 1079;   // CustomValue1 
+//     string custom_value_2 = 1080;   // CustomValue2 
+//     string custom_value_3 = 1081;   // CustomValue3     
+//     string ad_format = 1082; // AdFormat --> format
+// }
+
+
+
+message EventClick {    
+    
+    string date = 1000;   // Date // int32 date = 1000;   ------------- empty value   `avro:"aa" json:"aa"` ???    
+    // id_network_type = ;  !!!!!!!!!!!!!!!!!!!
+    string user_ip = 1001;  // UserIP 
+    string country = 1002;  // Country 
+    uint32 id_language = 1003;	// Language --> idlanguage
+    string site_hostname = 1004;    // SiteHostname 
+    int64 id_advertiser = 1005; // Advertiser --> idadvertiser
+    int64 id_publisher = 1006;  // Publisher --> idpublisher
+    int64 id_site = 1007;   // Site --> idsite
+    int64 id_zone = 1008;   // Zone --> idzone
+    uint32 id_category = 1009;  // Category --> idcategory
+    int64 id_campaign = 1010;   // Campaign --> idcampaign
+    int64 id_variation = 1011;  // Variation --> idvariation
+    uint32 id_os = 1012;    // OS --> idos
+    uint32 id_browser = 1013;   // Browser --> idbrowser
+    uint32 id_device = 1014;    // Device --> iddevice
+    uint32 id_carrier = 1015;   // Carrier --> idcarrier
+    uint32 id_isp = 1016;   // ISP --> idisp
+    uint32 sub = 1017;  // Sub 
+    double value = 1018;     // Value
+    int32 publisher_rate = 1019;    // PublisherRate
+    string publisher_currency = 1020;   // PublisherCurrency
+    string campaign_currency = 1021;    // CampaignCurrency
+    double exchange_to_publisher = 1022;    // Exchange2Publisher
+    double exchange_to_network = 1023;  // Exchange2Network
+    uint32 ad_type = 1024;  //AdType
+    uint32 id_network = 1025; //Network -> idnetwork
+    string country_original = 1026; // CountryOriginal
+    string http_x_forwarded_for = 1027; //HTTPXForwardedFor
+    uint32 id_product_category = 1028;   // ProductCategory --> idproduct_category
+    uint32 pricing_model = 1029;    // PricingModel 
+    uint32 https = 1030; //HTTPS 
+    string screen_resolution = 1031;    // ScreenResolution
+    string user_id = 1032;  // UserID 
+    string url_hash = 1033; // URLHash 
+    string referer_site_hostname = 1034;    // RefererSiteHostname 
+    uint32 adblock = 1035;  // AdBlock 
+    int64 id_offer = 1036;  // Offer --> idoffer
+    uint32 id_landing_page = 1037;   // LandingPage --> idlanding_page
+    int32 id_datacenter = 1038; // Datacenter --> iddatacenter
+    int32 id_carrier_source = 1039; // CarrierSource --> idcarrier_source
+    uint32 noscript = 1040; // NoScript 
+    uint32 incognito_mode = 1041; // IncognitoMode
+    uint32 test_mode = 1042;     // TestMode 
+    uint32 region_geoname_id = 1043;     // RegionGeonameID
+    uint32 id_partner = 1044;   // Partner --> idpartner
+    uint32 city_geoname_id = 1045;  // CityGeonameID 
+    string netacuity_proxy_type = 1046; // NetacuityProxyType 
+    string netacuity_proxy_description = 1047;  // NetacuityProxyDescription 
+    string adblock_ver = 1048;  // AdblockVersion
+    int64 impression_all_invalid_reasons = 1049;    // ImpressionAllInvalidReasons 
+    uint32 sub2 = 1050; // Sub2 
+    uint32 sub3 = 1051; // Sub3 
+    string script_type = 1052;  // ScriptType 
+    string script_name = 1053;  // ScriptName 
+    string script_ver = 1054;   // ScriptVer 
+    uint32 browser_ver = 1055;  // BrowserVer 
+    uint32 vr = 1056;   // VR 
+    uint32 no_funds = 1057; // NoFunds 
+    uint32 id_multizone = 1058;  // MultiZone --> idmultizone
+    uint32 email_isp = 1059;    // EmailISP 
+    uint32 script_detail = 1060;    // ScriptDetail 
+    int32 script_version = 1061;    // ScriptVersion 
+    uint32 id_advertiser_ad_type = 1062;    // IdAdvertiserAdType --> idadvertiser_ad_type
+    uint32 id_proxy = 1063;  // Proxy --> idproxy
+    uint32 id_campaign_type = 1064;  // IdCampaignType --> idcampaign_type
+    string rtb_inventory_id = 1065; // RtbInventoryId 
+    string rtb_inventory_name = 1066;   // RtbInventoryName 
+    uint32 key_value_1 = 1067;  // KeyValue1 
+    uint32 key_value_2 = 1068;  // KeyValue2 
+    uint32 key_value_3 = 1069;  // KeyValue3 
+    uint32 key_value_4 = 1070;  // KeyValue4 
+    uint32 key_value_5 = 1071;  // KeyValue5 
+    uint32 key_value_6 = 1072;  // KeyValue6 
+    uint32 key_value_7 = 1073;  // KeyValue7 
+    uint32 key_value_8 = 1074;  // KeyValue8 
+    uint32 key_value_9 = 1075;  // KeyValue9 
+    uint32 key_value_10 = 1076; // KeyValue10 
+    uint32 fallback_position = 1077;    // FallbackPosition
+    string ad_serving_host = 1078;  // AdServingHost 
+    string custom_value_1 = 1079;   // CustomValue1 
+    string custom_value_2 = 1080;   // CustomValue2 
+    string custom_value_3 = 1081;   // CustomValue3     
+    string ad_format = 1082; // AdFormat --> format
+
+
+    // unique fields
+
+
+    uint32 click_status = 1;    // ClickStatus 
+    string click_invalid_reason = 2;    // InvalidReason 
+    uint32 impression_status = 3;   // ImpressionsStatus 
+    int32 impression_invalid_reason = 4;    // ImpressionInvalidReason 
+    int32 click_x = 5;  // ClickX --> clickx
+    int32 click_y = 6;  // ClickY --> clicky
+    uint32 position = 7;    // Position
+    uint32 click_all_invalid_reasons = 9;   // ClickAllInvalidReasons 
+    int32 email_status = 10;    // EmailStatus 
+    uint32 internal = 11;   // Internal 
+    uint32 id_responsive_layout = 12;   // ResponsiveLayout --> idresponsive_layout
+    uint32 refresh_iteration = 13;  // RefreshIteration 
+    float bid_shading_value = 14;   // BidShadingValue
+    float second_best_value = 15;   // SecondBestValue 
+    float auction_floor = 16;   // AuctionFloor 
+    float auction_ceil = 17;    // AuctionCeil 
+    uint32 ad_request_result = 18;  // AdRequestResult 
+    uint32 id_traffic_source = 19;  // TrafficSource --> idtraffic_source
+    uint32 id_client_hints = 20;    // IdClientHints --> client_hints_usage
+    int32 proxy_status = 21;    //ProxyStatus       ------------- empty value
+}
+
+
+/*
+null proxy_status
+null date
+
+uint8 id_network_type // TrafficType --> idnetwork_type
+
+*/
