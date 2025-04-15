@@ -27,7 +27,7 @@ enum AdEventType{
 
 
 message AdEvent {
-    int64 date_int=1;
+    int32 date_int=1;
     uint64 time=2;
     string country=3;
     int32 idlanguage=4;

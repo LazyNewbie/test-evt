@@ -15,7 +15,7 @@ use Google\Protobuf\Internal\GPBUtil;
 class AdEvent extends \Google\Protobuf\Internal\Message
 {
     /**
-     * Generated from protobuf field <code>int64 date_int = 1;</code>
+     * Generated from protobuf field <code>int32 date_int = 1;</code>
      */
     protected $date_int = 0;
     /**
@@ -533,7 +533,7 @@ class AdEvent extends \Google\Protobuf\Internal\Message
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type int|string $date_int
+     *     @type int $date_int
      *     @type int|string $time
      *     @type string $country
      *     @type int $idlanguage
@@ -669,8 +669,8 @@ class AdEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 date_int = 1;</code>
-     * @return int|string
+     * Generated from protobuf field <code>int32 date_int = 1;</code>
+     * @return int
      */
     public function getDateInt()
     {
@@ -678,13 +678,13 @@ class AdEvent extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>int64 date_int = 1;</code>
-     * @param int|string $var
+     * Generated from protobuf field <code>int32 date_int = 1;</code>
+     * @param int $var
      * @return $this
      */
     public function setDateInt($var)
     {
-        GPBUtil::checkInt64($var);
+        GPBUtil::checkInt32($var);
         $this->date_int = $var;
 
         return $this;

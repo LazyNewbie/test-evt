@@ -15,3 +15,9 @@ https://protobuf.dev/programming-guides/proto3/
 
 
 protobuf to avro https://github.com/flipp-oss/protoc-gen-avro
+
+
+
+
+
+go get -u github.com/LazyNewbie/test-evt/generated/go/main@master
