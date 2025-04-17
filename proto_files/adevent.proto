@@ -4,7 +4,6 @@ option go_package ="main/adevent";
 option php_namespace="Exads\\Common\\Schema\\Events";
 option php_metadata_namespace = "Exads\\Common\\GPBMetadata";
 
-
 // reserved
 
 
@@ -301,3 +300,17 @@ Array
 
 
 */
+
+
+
+// The greeting service definition.
+service AdEventsService {
+    // Sends a greeting
+    rpc Enqueue (AdEvent) returns (AdEventResponse) {}
+
+}
+
+message AdEventResponse{
+    string message = 1;
+    bool error = 2;
+}

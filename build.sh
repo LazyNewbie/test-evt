@@ -16,11 +16,20 @@ if [ "$(ls $outputPHP | wc -l)" -gt 0 ]; then
 fi
 
 
-find ./proto_files/ -iname "*.proto" | while read file
-do
- "$SCRIPTPATH/protoc/bin/protoc" --php_out="$outputPHP" --go_out="$outputGO" "$file";
+#find ./proto_files/ -iname "*.proto" | while read file
+#do
+
+
+ "$SCRIPTPATH/protoc/bin/protoc" \
+  --proto_path="$SCRIPTPATH/proto_files" \
+  --php_out="$outputPHP" \
+  --grpc_out="$outputPHP" \
+  --go_out="$outputGO" \
+  --go-grpc_out="$outputGO" \
+  --plugin=protoc-gen-grpc="$SCRIPTPATH/protoc/grpc_php_plugin" \
+  "$SCRIPTPATH/proto_files/adevent.proto"
 # ./protoc/bin/protoc --php_out=$outputPHP --go_out=$outputGO --avro_out=./generated/avro/ --avro_opt=namespace_map=main:exads.avro "$file";
-done
+#done
 
 
 php "$tools/constants2enum.php" "$outputPHP" "Exads/Common/GPBMetadata";
