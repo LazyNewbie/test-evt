@@ -4,7 +4,7 @@
 # source: adevent.proto
 
 
-namespace Exads\Common\Schema\Events;
+namespace Exads\Grpc\Rocinante;
 
 enum AdEventType: int
 {

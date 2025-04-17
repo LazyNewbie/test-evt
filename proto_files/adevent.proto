@@ -1,8 +1,8 @@
 syntax = "proto3";
 package exads.schema.events;
 option go_package ="main/adevent";
-option php_namespace="Exads\\Common\\Schema\\Events";
-option php_metadata_namespace = "Exads\\Common\\GPBMetadata";
+option php_namespace="Exads\\Grpc\\Rocinante";
+option php_metadata_namespace = "Exads\\Grpc\\GPBMetadata";
 
 // reserved
 
@@ -25,7 +25,7 @@ enum AdEventType{
 }
 
 
-message AdEvent {
+message AdEventLog {
     int32 date_int=1;
     uint64 time=2;
     string country=3;
@@ -155,6 +155,21 @@ message AdEvent {
     string custom_value_2=127;
     string custom_value_3=128;
 }
+
+
+
+service AdEventHandler {
+
+    rpc SendLog (AdEventLog) returns (SendLogResponse) {}
+
+}
+
+message SendLogResponse{
+    string message = 1;
+    bool error = 2;
+}
+
+
 
 
 /*
@@ -300,17 +315,3 @@ Array
 
 
 */
-
-
-
-// The greeting service definition.
-service AdEventsService {
-    // Sends a greeting
-    rpc Enqueue (AdEvent) returns (AdEventResponse) {}
-
-}
-
-message AdEventResponse{
-    string message = 1;
-    bool error = 2;
-}

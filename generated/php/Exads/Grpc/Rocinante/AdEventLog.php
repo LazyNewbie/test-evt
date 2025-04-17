@@ -3,16 +3,16 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: adevent.proto
 
-namespace Exads\Common\Schema\Events;
+namespace Exads\Grpc\Rocinante;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>exads.schema.events.AdEvent</code>
+ * Generated from protobuf message <code>exads.schema.events.AdEventLog</code>
  */
-class AdEvent extends \Google\Protobuf\Internal\Message
+class AdEventLog extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>int32 date_int = 1;</code>
@@ -664,7 +664,7 @@ class AdEvent extends \Google\Protobuf\Internal\Message
      * }
      */
     public function __construct($data = NULL) {
-        \Exads\Common\GPBMetadata\Adevent::initOnce();
+        \Exads\Grpc\GPBMetadata\Adevent::initOnce();
         parent::__construct($data);
     }
 

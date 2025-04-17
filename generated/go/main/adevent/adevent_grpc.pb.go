@@ -19,107 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AdEventsService_Enqueue_FullMethodName = "/exads.schema.events.AdEventsService/Enqueue"
+	AdEventHandler_SendLog_FullMethodName = "/exads.schema.events.AdEventHandler/SendLog"
 )
 
-// AdEventsServiceClient is the client API for AdEventsService service.
+// AdEventHandlerClient is the client API for AdEventHandler service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// The greeting service definition.
-type AdEventsServiceClient interface {
-	// Sends a greeting
-	Enqueue(ctx context.Context, in *AdEvent, opts ...grpc.CallOption) (*AdEventResponse, error)
+type AdEventHandlerClient interface {
+	SendLog(ctx context.Context, in *AdEventLog, opts ...grpc.CallOption) (*SendLogResponse, error)
 }
 
-type adEventsServiceClient struct {
+type adEventHandlerClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAdEventsServiceClient(cc grpc.ClientConnInterface) AdEventsServiceClient {
-	return &adEventsServiceClient{cc}
+func NewAdEventHandlerClient(cc grpc.ClientConnInterface) AdEventHandlerClient {
+	return &adEventHandlerClient{cc}
 }
 
-func (c *adEventsServiceClient) Enqueue(ctx context.Context, in *AdEvent, opts ...grpc.CallOption) (*AdEventResponse, error) {
+func (c *adEventHandlerClient) SendLog(ctx context.Context, in *AdEventLog, opts ...grpc.CallOption) (*SendLogResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AdEventResponse)
-	err := c.cc.Invoke(ctx, AdEventsService_Enqueue_FullMethodName, in, out, cOpts...)
+	out := new(SendLogResponse)
+	err := c.cc.Invoke(ctx, AdEventHandler_SendLog_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AdEventsServiceServer is the server API for AdEventsService service.
-// All implementations must embed UnimplementedAdEventsServiceServer
+// AdEventHandlerServer is the server API for AdEventHandler service.
+// All implementations must embed UnimplementedAdEventHandlerServer
 // for forward compatibility.
-//
-// The greeting service definition.
-type AdEventsServiceServer interface {
-	// Sends a greeting
-	Enqueue(context.Context, *AdEvent) (*AdEventResponse, error)
-	mustEmbedUnimplementedAdEventsServiceServer()
+type AdEventHandlerServer interface {
+	SendLog(context.Context, *AdEventLog) (*SendLogResponse, error)
+	mustEmbedUnimplementedAdEventHandlerServer()
 }
 
-// UnimplementedAdEventsServiceServer must be embedded to have
+// UnimplementedAdEventHandlerServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedAdEventsServiceServer struct{}
+type UnimplementedAdEventHandlerServer struct{}
 
-func (UnimplementedAdEventsServiceServer) Enqueue(context.Context, *AdEvent) (*AdEventResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Enqueue not implemented")
+func (UnimplementedAdEventHandlerServer) SendLog(context.Context, *AdEventLog) (*SendLogResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendLog not implemented")
 }
-func (UnimplementedAdEventsServiceServer) mustEmbedUnimplementedAdEventsServiceServer() {}
-func (UnimplementedAdEventsServiceServer) testEmbeddedByValue()                         {}
+func (UnimplementedAdEventHandlerServer) mustEmbedUnimplementedAdEventHandlerServer() {}
+func (UnimplementedAdEventHandlerServer) testEmbeddedByValue()                        {}
 
-// UnsafeAdEventsServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AdEventsServiceServer will
+// UnsafeAdEventHandlerServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AdEventHandlerServer will
 // result in compilation errors.
-type UnsafeAdEventsServiceServer interface {
-	mustEmbedUnimplementedAdEventsServiceServer()
+type UnsafeAdEventHandlerServer interface {
+	mustEmbedUnimplementedAdEventHandlerServer()
 }
 
-func RegisterAdEventsServiceServer(s grpc.ServiceRegistrar, srv AdEventsServiceServer) {
-	// If the following call pancis, it indicates UnimplementedAdEventsServiceServer was
+func RegisterAdEventHandlerServer(s grpc.ServiceRegistrar, srv AdEventHandlerServer) {
+	// If the following call pancis, it indicates UnimplementedAdEventHandlerServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&AdEventsService_ServiceDesc, srv)
+	s.RegisterService(&AdEventHandler_ServiceDesc, srv)
 }
 
-func _AdEventsService_Enqueue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AdEvent)
+func _AdEventHandler_SendLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AdEventLog)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AdEventsServiceServer).Enqueue(ctx, in)
+		return srv.(AdEventHandlerServer).SendLog(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AdEventsService_Enqueue_FullMethodName,
+		FullMethod: AdEventHandler_SendLog_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AdEventsServiceServer).Enqueue(ctx, req.(*AdEvent))
+		return srv.(AdEventHandlerServer).SendLog(ctx, req.(*AdEventLog))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AdEventsService_ServiceDesc is the grpc.ServiceDesc for AdEventsService service.
+// AdEventHandler_ServiceDesc is the grpc.ServiceDesc for AdEventHandler service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AdEventsService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "exads.schema.events.AdEventsService",
-	HandlerType: (*AdEventsServiceServer)(nil),
+var AdEventHandler_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "exads.schema.events.AdEventHandler",
+	HandlerType: (*AdEventHandlerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Enqueue",
-			Handler:    _AdEventsService_Enqueue_Handler,
+			MethodName: "SendLog",
+			Handler:    _AdEventHandler_SendLog_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
