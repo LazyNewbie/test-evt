@@ -3,16 +3,16 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: adevent.proto
 
-namespace Exads\Grpc\Rocinante;
+namespace Exads\Common\Grpc\EventLog;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>exads.schema.events.AdEventLog</code>
+ * Generated from protobuf message <code>exads.schema.events.EventLogRequest</code>
  */
-class AdEventLog extends \Google\Protobuf\Internal\Message
+class EventLogRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>int32 date_int = 1;</code>
@@ -526,6 +526,12 @@ class AdEventLog extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>string custom_value_3 = 128;</code>
      */
     protected $custom_value_3 = '';
+    /**
+     *TODO: this field is not presented in the avro schema
+     *
+     * Generated from protobuf field <code>int32 proxy_status = 129;</code>
+     */
+    protected $proxy_status = 0;
 
     /**
      * Constructor.
@@ -661,10 +667,12 @@ class AdEventLog extends \Google\Protobuf\Internal\Message
      *     @type string $custom_value_1
      *     @type string $custom_value_2
      *     @type string $custom_value_3
+     *     @type int $proxy_status
+     *          TODO: this field is not presented in the avro schema
      * }
      */
     public function __construct($data = NULL) {
-        \Exads\Grpc\GPBMetadata\Adevent::initOnce();
+        \Exads\Common\Grpc\GPBMetadata\Adevent::initOnce();
         parent::__construct($data);
     }
 
@@ -3480,6 +3488,32 @@ class AdEventLog extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->custom_value_3 = $var;
+
+        return $this;
+    }
+
+    /**
+     *TODO: this field is not presented in the avro schema
+     *
+     * Generated from protobuf field <code>int32 proxy_status = 129;</code>
+     * @return int
+     */
+    public function getProxyStatus()
+    {
+        return $this->proxy_status;
+    }
+
+    /**
+     *TODO: this field is not presented in the avro schema
+     *
+     * Generated from protobuf field <code>int32 proxy_status = 129;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setProxyStatus($var)
+    {
+        GPBUtil::checkInt32($var);
+        $this->proxy_status = $var;
 
         return $this;
     }

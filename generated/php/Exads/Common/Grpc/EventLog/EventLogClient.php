@@ -1,11 +1,11 @@
 <?php
 // GENERATED CODE -- DO NOT EDIT!
 
-namespace Exads\Grpc\Rocinante;
+namespace Exads\Common\Grpc\EventLog;
 
 /**
  */
-class AdEventHandlerClient extends \Grpc\BaseStub {
+class EventLogClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -17,16 +17,16 @@ class AdEventHandlerClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \Exads\Grpc\Rocinante\AdEventLog $argument input argument
+     * @param \Exads\Common\Grpc\EventLog\EventLogRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\UnaryCall
      */
-    public function SendLog(\Exads\Grpc\Rocinante\AdEventLog $argument,
+    public function SendLog(\Exads\Common\Grpc\EventLog\EventLogRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/exads.schema.events.AdEventHandler/SendLog',
+        return $this->_simpleRequest('/exads.schema.events.EventLog/SendLog',
         $argument,
-        ['\Exads\Grpc\Rocinante\SendLogResponse', 'decode'],
+        ['\Exads\Common\Grpc\EventLog\SendLogReply', 'decode'],
         $metadata, $options);
     }
 

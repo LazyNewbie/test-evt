@@ -1,8 +1,8 @@
 syntax = "proto3";
 package exads.schema.events;
-option go_package ="main/adevent";
-option php_namespace="Exads\\Grpc\\Rocinante";
-option php_metadata_namespace = "Exads\\Grpc\\GPBMetadata";
+option go_package ="main/eventlog";
+option php_namespace="Exads\\Common\\Grpc\\EventLog";
+option php_metadata_namespace = "Exads\\Common\\Grpc\\GPBMetadata";
 
 // reserved
 
@@ -25,7 +25,7 @@ enum AdEventType{
 }
 
 
-message AdEventLog {
+message EventLogRequest {
     int32 date_int=1;
     uint64 time=2;
     string country=3;
@@ -154,17 +154,20 @@ message AdEventLog {
     string custom_value_1=126;
     string custom_value_2=127;
     string custom_value_3=128;
+
+    //TODO: this field is not presented in the avro schema
+    int32 proxy_status=129;
 }
 
 
 
-service AdEventHandler {
+service EventLog {
 
-    rpc SendLog (AdEventLog) returns (SendLogResponse) {}
+    rpc SendLog (EventLogRequest) returns (SendLogReply) {}
 
 }
 
-message SendLogResponse{
+message SendLogReply{
     string message = 1;
     bool error = 2;
 }

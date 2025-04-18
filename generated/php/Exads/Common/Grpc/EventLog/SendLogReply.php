@@ -3,16 +3,16 @@
 # NO CHECKED-IN PROTOBUF GENCODE
 # source: adevent.proto
 
-namespace Exads\Grpc\Rocinante;
+namespace Exads\Common\Grpc\EventLog;
 
 use Google\Protobuf\Internal\GPBType;
 use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>exads.schema.events.SendLogResponse</code>
+ * Generated from protobuf message <code>exads.schema.events.SendLogReply</code>
  */
-class SendLogResponse extends \Google\Protobuf\Internal\Message
+class SendLogReply extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string message = 1;</code>
@@ -34,7 +34,7 @@ class SendLogResponse extends \Google\Protobuf\Internal\Message
      * }
      */
     public function __construct($data = NULL) {
-        \Exads\Grpc\GPBMetadata\Adevent::initOnce();
+        \Exads\Common\Grpc\GPBMetadata\Adevent::initOnce();
         parent::__construct($data);
     }
 
