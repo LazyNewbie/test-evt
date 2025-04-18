@@ -10,9 +10,9 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>exads.schema.events.EventLogRequest</code>
+ * Generated from protobuf message <code>exads.schema.events.AdEventRequest</code>
  */
-class EventLogRequest extends \Google\Protobuf\Internal\Message
+class AdEventRequest extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>int32 date_int = 1;</code>

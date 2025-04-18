@@ -25,7 +25,7 @@ enum AdEventType{
 }
 
 
-message EventLogRequest {
+message AdEventRequest {
     int32 date_int=1;
     uint64 time=2;
     string country=3;
@@ -161,13 +161,13 @@ message EventLogRequest {
 
 
 
-service EventLog {
+service EventLogger {
 
-    rpc SendLog (EventLogRequest) returns (SendLogReply) {}
+    rpc Send (AdEventRequest) returns (AdEventReply) {}
 
 }
 
-message SendLogReply{
+message AdEventReply{
     string message = 1;
     bool error = 2;
 }

@@ -10,9 +10,9 @@ use Google\Protobuf\Internal\RepeatedField;
 use Google\Protobuf\Internal\GPBUtil;
 
 /**
- * Generated from protobuf message <code>exads.schema.events.SendLogReply</code>
+ * Generated from protobuf message <code>exads.schema.events.AdEventReply</code>
  */
-class SendLogReply extends \Google\Protobuf\Internal\Message
+class AdEventReply extends \Google\Protobuf\Internal\Message
 {
     /**
      * Generated from protobuf field <code>string message = 1;</code>

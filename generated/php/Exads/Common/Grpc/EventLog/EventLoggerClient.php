@@ -5,7 +5,7 @@ namespace Exads\Common\Grpc\EventLog;
 
 /**
  */
-class EventLogClient extends \Grpc\BaseStub {
+class EventLoggerClient extends \Grpc\BaseStub {
 
     /**
      * @param string $hostname hostname
@@ -17,16 +17,16 @@ class EventLogClient extends \Grpc\BaseStub {
     }
 
     /**
-     * @param \Exads\Common\Grpc\EventLog\EventLogRequest $argument input argument
+     * @param \Exads\Common\Grpc\EventLog\AdEventRequest $argument input argument
      * @param array $metadata metadata
      * @param array $options call options
      * @return \Grpc\UnaryCall
      */
-    public function SendLog(\Exads\Common\Grpc\EventLog\EventLogRequest $argument,
+    public function Send(\Exads\Common\Grpc\EventLog\AdEventRequest $argument,
       $metadata = [], $options = []) {
-        return $this->_simpleRequest('/exads.schema.events.EventLog/SendLog',
+        return $this->_simpleRequest('/exads.schema.events.EventLogger/Send',
         $argument,
-        ['\Exads\Common\Grpc\EventLog\SendLogReply', 'decode'],
+        ['\Exads\Common\Grpc\EventLog\AdEventReply', 'decode'],
         $metadata, $options);
     }
 

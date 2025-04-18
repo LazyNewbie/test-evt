@@ -19,101 +19,101 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EventLog_SendLog_FullMethodName = "/exads.schema.events.EventLog/SendLog"
+	EventLogger_Send_FullMethodName = "/exads.schema.events.EventLogger/Send"
 )
 
-// EventLogClient is the client API for EventLog service.
+// EventLoggerClient is the client API for EventLogger service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type EventLogClient interface {
-	SendLog(ctx context.Context, in *EventLogRequest, opts ...grpc.CallOption) (*SendLogReply, error)
+type EventLoggerClient interface {
+	Send(ctx context.Context, in *AdEventRequest, opts ...grpc.CallOption) (*AdEventReply, error)
 }
 
-type eventLogClient struct {
+type eventLoggerClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewEventLogClient(cc grpc.ClientConnInterface) EventLogClient {
-	return &eventLogClient{cc}
+func NewEventLoggerClient(cc grpc.ClientConnInterface) EventLoggerClient {
+	return &eventLoggerClient{cc}
 }
 
-func (c *eventLogClient) SendLog(ctx context.Context, in *EventLogRequest, opts ...grpc.CallOption) (*SendLogReply, error) {
+func (c *eventLoggerClient) Send(ctx context.Context, in *AdEventRequest, opts ...grpc.CallOption) (*AdEventReply, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SendLogReply)
-	err := c.cc.Invoke(ctx, EventLog_SendLog_FullMethodName, in, out, cOpts...)
+	out := new(AdEventReply)
+	err := c.cc.Invoke(ctx, EventLogger_Send_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// EventLogServer is the server API for EventLog service.
-// All implementations must embed UnimplementedEventLogServer
+// EventLoggerServer is the server API for EventLogger service.
+// All implementations must embed UnimplementedEventLoggerServer
 // for forward compatibility.
-type EventLogServer interface {
-	SendLog(context.Context, *EventLogRequest) (*SendLogReply, error)
-	mustEmbedUnimplementedEventLogServer()
+type EventLoggerServer interface {
+	Send(context.Context, *AdEventRequest) (*AdEventReply, error)
+	mustEmbedUnimplementedEventLoggerServer()
 }
 
-// UnimplementedEventLogServer must be embedded to have
+// UnimplementedEventLoggerServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedEventLogServer struct{}
+type UnimplementedEventLoggerServer struct{}
 
-func (UnimplementedEventLogServer) SendLog(context.Context, *EventLogRequest) (*SendLogReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SendLog not implemented")
+func (UnimplementedEventLoggerServer) Send(context.Context, *AdEventRequest) (*AdEventReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
 }
-func (UnimplementedEventLogServer) mustEmbedUnimplementedEventLogServer() {}
-func (UnimplementedEventLogServer) testEmbeddedByValue()                  {}
+func (UnimplementedEventLoggerServer) mustEmbedUnimplementedEventLoggerServer() {}
+func (UnimplementedEventLoggerServer) testEmbeddedByValue()                     {}
 
-// UnsafeEventLogServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to EventLogServer will
+// UnsafeEventLoggerServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to EventLoggerServer will
 // result in compilation errors.
-type UnsafeEventLogServer interface {
-	mustEmbedUnimplementedEventLogServer()
+type UnsafeEventLoggerServer interface {
+	mustEmbedUnimplementedEventLoggerServer()
 }
 
-func RegisterEventLogServer(s grpc.ServiceRegistrar, srv EventLogServer) {
-	// If the following call pancis, it indicates UnimplementedEventLogServer was
+func RegisterEventLoggerServer(s grpc.ServiceRegistrar, srv EventLoggerServer) {
+	// If the following call pancis, it indicates UnimplementedEventLoggerServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&EventLog_ServiceDesc, srv)
+	s.RegisterService(&EventLogger_ServiceDesc, srv)
 }
 
-func _EventLog_SendLog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(EventLogRequest)
+func _EventLogger_Send_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AdEventRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(EventLogServer).SendLog(ctx, in)
+		return srv.(EventLoggerServer).Send(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: EventLog_SendLog_FullMethodName,
+		FullMethod: EventLogger_Send_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(EventLogServer).SendLog(ctx, req.(*EventLogRequest))
+		return srv.(EventLoggerServer).Send(ctx, req.(*AdEventRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// EventLog_ServiceDesc is the grpc.ServiceDesc for EventLog service.
+// EventLogger_ServiceDesc is the grpc.ServiceDesc for EventLogger service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var EventLog_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "exads.schema.events.EventLog",
-	HandlerType: (*EventLogServer)(nil),
+var EventLogger_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "exads.schema.events.EventLogger",
+	HandlerType: (*EventLoggerServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SendLog",
-			Handler:    _EventLog_SendLog_Handler,
+			MethodName: "Send",
+			Handler:    _EventLogger_Send_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
