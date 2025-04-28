@@ -1,0 +1,11 @@
+{
+    "name": "exads/event-protobuf",
+    "license": "proprietary",
+    "description": "This package describes event message structure based on protobuf.",
+    "autoload": {
+        "psr-4": {
+            "Exads\\Protobuf\\": "generated/php/Exads/Protobuf"
+        }
+    },
+    "require": {}
+}

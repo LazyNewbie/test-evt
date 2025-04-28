@@ -1,0 +1,324 @@
+syntax = "proto3";
+package exads.schema.events;
+option go_package ="main/events";
+option php_namespace="Exads\\Protobuf\\Events";
+option php_metadata_namespace = "Exads\\Protobuf\\GPBMetadata";
+
+
+/**
+* 1. Read this documentation https://protobuf.dev/programming-guides/proto3/ 
+* 2. DO NOT reuse indexes and DON'T just delete them. Use "reserved" key instead @see https://protobuf.dev/programming-guides/proto3/#fieldreserved
+*/
+
+enum AdEventType{
+	Unspecified = 0;
+	Impression = 1;
+	Click = 2;
+	Goal = 3;
+	VideoView = 4;
+	VideoHit = 5;
+	Rtb = 6;
+	Wpn = 7;
+	AdRequest = 8;
+}
+
+enum RtbType{
+    UnspecifiedRtbType = 0;
+    Advertiser = 1;
+    Publisher  = 2;
+}
+
+enum WpnEventType{
+    UnspecifiedWpnEvtType = 0;
+    Subscriptions = 1;
+    Unsubscriptions  = 2;
+    Sent  = 3;
+}
+
+
+message AdEventRequest {
+    int32 date_int=1;
+    int64 time=2;
+    string country=3;
+    uint32 idlanguage=4;
+    string site_hostname=5;
+    int64 idadvertiser=6;
+    int64 idpublisher=7;
+    int64 idsite=8;
+    int64 idzone=9;
+    uint32 idcategory=10;
+    int64 idcampaign=11;
+    int64 idvariation=12;
+    uint32 idos=13;
+    uint32 idbrowser=14;
+    uint32 iddevice=15;
+    uint32 idcarrier=16;
+    uint32 idisp=17;
+    uint32 sub=18;
+    double value=19;
+    int32 publisher_rate=20;
+    string publisher_currency=21;
+    string campaign_currency=22;
+    double exchange_to_publisher=23;
+    double exchange_to_network=24;
+    int32 ad_type=25;
+    string format=26;
+    uint32 idnetwork=27;
+    uint32 impression_status=28;
+    int32 impression_invalid_reason=29;
+    uint32 adblock=30;
+    int64 idoffer=31;
+    uint32 idlanding_page=32;
+    uint32 position=33;
+    uint32 region_geoname_id=34;
+    uint32 idpartner=35;
+    uint32 click_status=36;
+    string click_invalid_reason=37;
+    uint32 click_all_invalid_reasons=38;
+    string idgoal=39;
+    uint32 rtb_total_time=40;
+    double rtb_content_size=41;
+    string bid_status=42;
+    string error_reason=43;
+    bool rtb_query_status=44;
+    double rtb_value=45;
+    uint32 rtb_request_type=46;
+    AdEventType event_type=47;
+    string user_ip=48;
+    string country_original=49;
+    string http_x_forwarded_for=50;
+    uint32 idproduct_category=51;
+    uint32 pricing_model=52;
+    uint32 https=53;
+    string screen_resolution=54;
+    string user_id=55;
+    string url_hash=56;
+    string referer_site_hostname=57;
+    double execution_time=58;
+    uint32 video_event=59;
+    int32 errorcode=60;
+    string imp_id=61;
+    string bid_id=62;
+    uint32 http_code=63;
+    int32 idcarrier_source=64;
+    uint32 noscript=65;
+    uint32 incognito_mode=66;
+    uint32 test_mode=67;
+    uint32 city_geoname_id=68;
+    int32 is_trusted_proxy=69;
+    int32 iddatacenter=70;
+    string adblock_ver=71;
+    int32 clickx=72;
+    int32 clicky=73;
+    string container_resolution=74;
+    int64 impression_all_invalid_reasons=75;
+    string netacuity_proxy_description=76;
+    string netacuity_proxy_type=77;
+    double eur_to_usd=78;
+    WpnEventType wpn_event=79;
+    int32 email_status=80;
+    uint32 sub2=81;
+    uint32 sub3=82;
+    string script_type=83;
+    string script_name=84;
+    string script_ver=85;
+    uint32 browser_ver=86;
+    uint32 vr=87;
+    uint32 internal=88;
+    uint32 sampling=89;
+    uint32 no_funds=90;
+    uint32 idresponsive_layout=91;
+    uint32 idmultizone=92;
+    uint32 email_isp=93;
+    uint32 script_detail=94;
+    int32 script_version=95;
+    double conversion_value_eur=96;
+    double conversion_value_usd=97;
+    uint32 idadvertiser_ad_type=98;
+    uint32 idproxy=99;
+    uint32 ad_request_result=100;
+    uint32 idnetwork_type=101;
+    string rtb_inventory_id=102;
+    string rtb_inventory_name=103;
+    uint32 idcampaign_type=104;
+    uint32 refresh_iteration=105;
+    uint32 key_value_1=106;
+    uint32 key_value_2=107;
+    uint32 key_value_3=108;
+    uint32 key_value_4=109;
+    uint32 key_value_5=110;
+    uint32 key_value_6=111;
+    uint32 key_value_7=112;
+    uint32 key_value_8=113;
+    uint32 key_value_9=114;
+    uint32 key_value_10=115;
+    uint64 cdn_usage=116;
+    float bid_shading_value=117;
+    float second_best_value=118;
+    float auction_floor=119;
+    float auction_ceil=120;
+    uint32 idtraffic_source=121;
+    uint32 fallback_position=122;
+    string ad_serving_host=123;
+    uint32 idrtb_error_reason=124;
+    uint32 client_hints_usage=125;
+    string custom_value_1=126;
+    string custom_value_2=127;
+    string custom_value_3=128;
+    int32 is_self_hosted=129;
+    int32 proxy_status=130;
+}
+
+
+
+service EventLog {
+
+    rpc Send (AdEventRequest) returns (AdEventResponse) {}
+
+    rpc SendEvents (stream AdEventRequest) returns (AdEventResponse);
+
+}
+
+message AdEventResponse{
+    string message = 1;
+    bool error = 2;
+}
+
+
+
+
+
+
+/*
+Event{
+		Date:                      eventData["aa"]          date_int
+		Language:                  eventData["ad"]          idlanguage
+		Advertiser:                eventData["af"]          idadvertiser
+		Publisher:                 eventData["ag"]          idpublisher
+		Site:                      eventData["ah"]          idsite
+		Zone:                      eventData["ai"]          idzone
+		Category:                  eventData["aj"]          idcategory
+		Campaign:                  eventData["ak"]          idcampaign
+		Variation:                 eventData["al"]          idvariation
+		OS:                        eventData["am"]          idos
+		Browser:                   eventData["an"]          idbrowser
+		Device:                    eventData["ao"]          iddevice
+		Carrier:                   eventData["ap"]          idcarrier
+		ISP:                       eventData["aq"]          idisp
+		Sub:                       eventData["ar"]          sub
+		Sub2:                      eventData["dc"]          sub2
+		Sub3:                      eventData["dd"]          sub3
+		PublisherRate:             eventData["at"]          publisher_rate
+		AdType:                    eventData["ay"]          ad_type
+		Network:                   eventData["ba"]          idnetwork
+		ImpressionsStatus:         eventData["bb"]          impression_status
+		ImpressionInvalidReason:   eventData["bc"]          impression_invalid_reason
+		AdBlock:                   eventData["bd"]          adblock
+		Offer:                     eventData["be"]          idoffer
+		LandingPage:               eventData["bf"]          idlanding_page
+		Position:                  eventData["bg"]          position
+		RegionGeonameID:           eventData["bh"]          region_geoname_id
+		Partner:                   eventData["bi"]          idpartner
+		ClickStatus:               eventData["bj"]          click_status
+		RtbToalTime:               eventData["bn"]          rtb_total_time
+		RtbRequestType:            eventData["bt"]          rtb_request_type
+		Type:                      eventData["bu"]          event_type
+		CityGeonameID:             eventData["cp"]          city_geoname_id
+		ClickAllInvalidReasons:    eventData["bl"]          click_all_invalid_reasons
+		ClickX:                    eventData["ct"]          clickx
+		ClickY:                    eventData["cu"]          clicky
+		ErrorCode:                 eventData["ch"]          errorcode
+		HTTPCode:                  eventData["ck"]          http_code
+		HTTPS:                     eventData["ca"]          https
+		CarrierSource:             eventData["cl"]          idcarrier_source
+		Datacenter:                eventData["cr"]          iddatacenter
+		ProductCategory:           eventData["by"]          idproduct_category
+		IncognitoMode:             eventData["cn"]          incognito_mode
+		TrustedProxy:              eventData["cq"]          is_trusted_proxy
+		NoScript:                  eventData["cm"]          noscript
+		PricingModel:              eventData["bz"]          pricing_model
+		TestMode:                  eventData["co"]          test_mode
+		VideoEvent:                eventData["cg"]          video_event
+		WpnEvent:                  eventData["da"]          wpn_event
+		EmailStatus:               eventData["db"]          email_status
+		IdClientHints:             eventData["eu"]          client_hints_usage
+		Time:                      eventData["ab"]          time
+		Value:                     eventData["as"]          value
+		Exchange2Publisher:        eventData["aw"]          exchange_to_publisher
+		Exchange2Network:          eventData["ax"]          exchange_to_network
+		ExchangeEUR2USD:           eventData["cz"]          eur_to_usd
+		RtbContentSize:            eventData["bo"]          rtb_content_size
+		RtbValue:                  eventData["bs"]          rtb_value
+		ExecutionTime:             eventData["cf"]          execution_time
+		ConversionValueEUR:        eventData["dr"]          conversion_value_eur
+		ConversionValueUSD:        eventData["ds"]          conversion_value_usd
+		Country:                   eventData["ac"]          country
+		SiteHostname:              eventData["ae"]          site_hostname
+		PublisherCurrency:         eventData["au"]          publisher_currency
+		CampaignCurrency:          eventData["av"]          campaign_currency
+		AdFormat:                  eventData["az"]          format
+		ClickInvalidReason:        eventData["bk"]          click_invalid_reason
+		Goal:                      eventData["bm"]          idgoal
+		BidStatus:                 eventData["bp"]          bid_status
+		ErrorReason:               eventData["bq"]          error_reason
+		AdblockVersion:            eventData["cs"]          adblock_ver
+		BidID:                     eventData["cj"]          bid_id
+		ContainerResolution:       eventData["cv"]          container_resolution
+		CountryOriginal:           eventData["bw"]          country_original
+		HTTPXForwarderFor:         eventData["bx"]          http_x_forwarded_for
+		ImpID:                     eventData["ci"]          imp_id
+		NetacuityProxyDescription: eventData["cx"]          netacuity_proxy_description
+		NetacuityProxyType:        eventData["cy"]          netacuity_proxy_type
+		RefererSiteHostname:       eventData["ce"]          referer_site_hostname
+		ScreenResolution:          eventData["cb"]          screen_resolution
+		URLHash:                   eventData["cd"]          url_hash
+		UserID:                    eventData["cc"]          user_id
+		UserIP:                    eventData["bv"]          user_ip
+		ScriptType:                eventData["de"]          script_type
+		ScriptName:                eventData["df"]          script_name
+		ScriptVer:                 eventData["dg"]          script_ver
+		RtbInventoryId:            eventData["dx"]          rtb_inventory_id
+		RtbInventoryName:          eventData["dy"]          rtb_inventory_name
+		AdServingHost:             eventData["es"]          ad_serving_host
+		CustomValue1:              eventData["ev"]          custom_value_1
+		CustomValue2:              eventData["ew"]          custom_value_2
+		CustomValue3:              eventData["ex"]          custom_value_3
+		BrowserVer:                eventData["dh"]          browser_ver
+		EmailISP:                  eventData["do"]          email_isp
+		VR:                        eventData["di"]          vr
+		Internal:                  eventData["dj"]          internal
+		Sampling:                  eventData["dk"]          sampling
+		NoFunds:                   eventData["dl"]          no_funds
+		RtbQueryStatus:            eventData["br"]          rtb_query_status
+		ResponsiveLayout:          eventData["dm"]          idresponsive_layout
+		MultiZone:                 eventData["dn"]          idmultizone
+		ScriptDetail:              eventData["dp"]          script_detail
+		ScriptVersion:             eventData["dq"]          script_version
+		IdadvertiserAdType:        eventData["dt"]          idadvertiser_ad_type
+		Proxy:                     eventData["du"]          idproxy
+		AdRequestResult:           eventData["dv"]          ad_request_result
+		TrafficType:               eventData["dw"]          idnetwork_type
+		TrafficSource:             eventData["eq"]          idtraffic_source
+		FallbackPosition:          eventData["er"]          fallback_position
+		IdCampaignType:            eventData["dz"]          idcampaign_type
+		RefreshIteration:          eventData["ea"]          refresh_iteration
+		KeyValue1:                 eventData["eb"]          key_value_1
+		KeyValue2:                 eventData["ec"]          key_value_2
+		KeyValue3:                 eventData["ed"]          key_value_3
+		KeyValue4:                 eventData["ee"]          key_value_4
+		KeyValue5:                 eventData["ef"]          key_value_5
+		KeyValue6:                 eventData["eg"]          key_value_6
+		KeyValue7:                 eventData["eh"]          key_value_7
+		KeyValue8:                 eventData["ei"]          key_value_8
+		KeyValue9:                 eventData["ej"]          key_value_9
+		KeyValue10:                eventData["ek"]          key_value_10
+		IdRtbErrorReason:          eventData["et"]          idrtb_error_reason
+		CdnUsage:                  eventData["el"]          cdn_usage
+		BidShadingValue:           eventData["em"]          bid_shading_value
+		SecondBestValue:           eventData["en"]          second_best_value
+		AuctionFloor:              eventData["eo"]          auction_floor
+		AuctionCeil:               eventData["ep"]          auction_ceil
+		ImpressionAllInvalidReasons ["cw"]                  impression_all_invalid_reasons
+	}
+
+*/
